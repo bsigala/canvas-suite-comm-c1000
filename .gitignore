@@ -1,0 +1,10 @@
+# Personal voice recordings and cloning intermediates — large and private.
+# These are inputs for the optional voice-clone pipeline, not course deliverables.
+Voice_Cloning_Studio/
+Voice_Samples/
+Studio_Clean_Samples/
+Audio_Assets/voice_samples/
+
+# Python caches
+__pycache__/
+*.pyc
