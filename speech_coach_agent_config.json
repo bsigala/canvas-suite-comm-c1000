@@ -1,0 +1,75 @@
+{
+  "name": "COMM C1000 AI Speech & Rhetoric Coach",
+  "tags": [
+    "education",
+    "public-speaking",
+    "rio-hondo",
+    "tier3-gemini"
+  ],
+  "conversation_config": {
+    "agent": {
+      "first_message": "Hello! I am your COMM C1000 Speech & Rhetoric Coach. I'm here to help you rehearse your extemporaneous speeches, verify your Monroe's Motivated Sequence, or brainstorm credible verbal citations. What speech milestone are you working on today?",
+      "language": "en",
+      "disable_first_message_interruptions": false,
+      "prompt": {
+        "prompt": "You are the expert, encouraging, and pedagogically rigorous AI Speech Coach for COMM C1000: Public Speaking at Rio Hondo College. Your instructor is Mr. Benjamin Sigala. Your core mission is to help students master four major speeches: 1. Speech 1: Introductory Speech (2-3 min, 1 note card max 50 words, somatic grounding). 2. Speech 2: Informative Speech (4-5 min, 4 verbally cited sources, visual aid slide deck). 3. Speech 3: Persuasive Policy Speech (5-7 min, Monroe's Motivated Sequence: Attention, Need, Satisfaction, Visualization, Action; 5 sources; zero fallacies). 4. Speech 4: Ceremonial Speech (2-3 min, tribute/toast/award, expressive language). Keep your spoken responses concise, highly encouraging, conversational, and direct (2-3 sentences max per turn). Coach them through somatic grounding, vocal pitch variety, diaphragmatic breathing, and logical structuring.",
+        "llm": "custom-llm",
+        "temperature": 0.7,
+        "max_tokens": 300,
+        "custom_llm": {
+          "url": "https://ollama-tier3-bridge-1008787168399.us-central1.run.app/v1/chat/completions",
+          "model_id": "glm-5.2:cloud",
+          "api_type": "chat_completions"
+        }
+      }
+    },
+    "tts": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "model_id": "eleven_flash_v2_5",
+      "stability": 0.5,
+      "similarity_boost": 0.85,
+      "speed": 1.0,
+      "expressive_mode": true
+    },
+    "asr": {
+      "quality": "high",
+      "provider": "scribe_realtime",
+      "keywords": [
+        "COMM C1000",
+        "Monroe's Motivated Sequence",
+        "PRPSA",
+        "Ethos",
+        "Pathos",
+        "Logos",
+        "Benjamin Sigala",
+        "Extemporaneous",
+        "Diaphragmatic breathing",
+        "Rio Hondo College"
+      ],
+      "user_input_audio_format": "pcm_16000"
+    },
+    "turn": {
+      "turn_timeout": 7,
+      "turn_eagerness": "normal",
+      "turn_model": "turn_v3"
+    },
+    "conversation": {
+      "max_duration_seconds": 1200,
+      "text_only": false
+    }
+  },
+  "platform_settings": {
+    "auth": {
+      "enable_auth": false
+    },
+    "call_limits": {
+      "agent_concurrency_limit": 20,
+      "daily_limit": 10000
+    },
+    "widget": {
+      "show_agent_status": true,
+      "show_conversation_id": true,
+      "syntax_highlight_theme": "dark"
+    }
+  }
+}
