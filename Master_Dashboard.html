@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMM C1000: Canvas Course Suite Master Dashboard</title>
+    <!-- React, ReactDOM and Babel Standalone for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+    <!-- Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --border: #1f2937;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --accent: #c68a4c;
+            --accent-hover: #8c5e28;
+            --accent-glow: rgba(198, 138, 76, 0.15);
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            flex-shrink: 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #c68a4c 0%, #8c5e28 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .brand-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .brand-tag {
+            background-color: var(--accent-glow);
+            border: 1px solid rgba(198, 138, 76, 0.3);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Main Dashboard Workspace */
+        .dashboard-body {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100vh - 70px);
+            overflow: hidden;
+        }
+
+        /* Sidebar Tabs */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-card);
+            border-right: 1px solid var(--border);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-shrink: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar-heading {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            padding-left: 12px;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease-in-out;
+            width: 100%;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background-color: var(--bg-card-hover);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-glow);
+            border-color: rgba(198, 138, 76, 0.4);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .tab-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Content Pane splitter: Left Preview, Right Code */
+        .content-pane {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            background-color: #0b0f19;
+        }
+
+        /* Preview Column */
+        .preview-pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border);
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .pane-header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 56px;
+            flex-shrink: 0;
+        }
+
+        .pane-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Viewport Controls */
+        .viewport-controls {
+            display: flex;
+            gap: 4px;
+            background-color: var(--bg-dark);
+            padding: 3px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .viewport-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .viewport-btn:hover {
+            color: var(--text-main);
+        }
+
+        .viewport-btn.active {
+            background-color: var(--bg-card-hover);
+            color: var(--accent);
+        }
+
+        /* Live Browser Iframe area */
+        .iframe-container {
+            flex-grow: 1;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            height: calc(100% - 56px);
+        }
+
+        .preview-iframe {
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            height: 100%;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%; /* Default Desktop */
+        }
+
+        /* Code Copy Center Column */
+        .code-pane {
+            width: 480px;
+            background-color: var(--bg-card);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .code-header {
+            padding: 12px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 56px;
+            flex-shrink: 0;
+        }
+
+        .copy-btn {
+            background-color: var(--accent);
+            color: #090d16;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent-hover);
+            color: #ffffff;
+        }
+
+        .code-box-wrapper {
+            flex-grow: 1;
+            padding: 20px;
+            overflow: hidden;
+            height: calc(100% - 56px);
+        }
+
+        .code-box {
+            width: 100%;
+            height: 100%;
+            background-color: #070b14;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            padding: 16px;
+            resize: none;
+            outline: none;
+            box-sizing: border-box;
+            tab-size: 4;
+        }
+
+        /* Success Pop Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: var(--success);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const pages = [
+            { id: 'homepage', label: 'Course Homepage', icon: '🏠', filename: 'Home_Page.html' },
+            { id: 'syllabus', label: 'Continuous Syllabus', icon: '📖', filename: 'Syllabus.html' },
+            { id: 'profile', label: 'Instructor Profile', icon: '👨‍🏫', filename: 'Profile_Page.html' },
+            { id: 'announcement', label: 'Welcome Announcement', icon: '📢', filename: 'Opening_Announcement.html' },
+            { id: 'discussion', label: 'Icebreaker Assignment', icon: '🎬', filename: 'Discussion_Icebreaker.html' },
+            { id: 'etiquette', label: 'Etiquette & 3 C\'s + Q', icon: '💬', filename: 'Discussion_Etiquette.html' }
+        ];
+
+        function App() {
+            const [activeTab, setActiveTab] = useState(pages[0]);
+            const [viewport, setViewport] = useState('desktop');
+            const [code, setCode] = useState('');
+            const [showToast, setShowToast] = useState(false);
+            const [showCodePanel, setShowCodePanel] = useState(true);
+            const textareaRef = useRef(null);
+
+            // Fetch code when active tab changes
+            useEffect(() => {
+                fetch(activeTab.filename)
+                    .then(res => {
+                        if (!res.ok) throw new Error("Fetch failed");
+                        return res.text();
+                    })
+                    .then(text => setCode(resurrectImages(text)))
+                    .catch(() => setCode(`<!-- Error loading ${activeTab.filename} -->`));
+            }, [activeTab]);
+
+            // Resurrect local circular picture in code and preview if necessary
+            function resurrectImages(html) {
+                // If there's an image src with a download link we keep it, otherwise map to local
+                return html;
+            }
+
+            const copyToClipboard = () => {
+                if (textareaRef.current) {
+                    textareaRef.current.select();
+                    document.execCommand('copy');
+                    setShowToast(true);
+                    setTimeout(() => setShowToast(false), 2500);
+                }
+            };
+
+            // Dynamic width style based on viewport
+            const getViewportStyle = () => {
+                switch(viewport) {
+                    case 'mobile': return { width: '410px' };
+                    case 'tablet': return { width: '768px' };
+                    default: return { width: '100%' };
+                }
+            };
+
+            return (
+                <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    {/* Top Header */}
+                    <nav className="navbar">
+                        <div className="navbar-brand">
+                            <span className="brand-logo">COMM C1000</span>
+                            <span className="brand-title">Canvas Course Suite Master Dashboard</span>
+                            <span className="brand-tag">Fall 2026</span>
+                        </div>
+                        <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                            Designed for Mr. Benjamin Sigala · Rio Hondo College
+                        </div>
+                    </nav>
+
+                    {/* Main workspace Splitter */}
+                    <div className="dashboard-body">
+                        {/* Sidebar tabs */}
+                        <aside className="sidebar">
+                            <div className="sidebar-heading">Course Templates</div>
+                            {pages.map(page => (
+                                <button
+                                    key={page.id}
+                                    className={`tab-btn ${activeTab.id === page.id ? 'active' : ''}`}
+                                    onClick={() => setActiveTab(page)}
+                                >
+                                    <span className="tab-icon">{page.icon}</span>
+                                    <span>{page.label}</span>
+                                </button>
+                            ))}
+                        </aside>
+
+                        {/* Split Panes wrapper */}
+                        <div className="content-pane">
+                            {/* Left Pane - Browser Preview */}
+                            <div className="preview-pane">
+                                <header className="pane-header">
+                                    <span className="pane-title">Live Browser Preview ({activeTab.filename})</span>
+                                    
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                        {/* Viewport switcher */}
+                                        <div className="viewport-controls">
+                                            <button
+                                                className={`viewport-btn ${viewport === 'desktop' ? 'active' : ''}`}
+                                                onClick={() => setViewport('desktop')}
+                                            >
+                                                Desktop
+                                            </button>
+                                            <button
+                                                className={`viewport-btn ${viewport === 'tablet' ? 'active' : ''}`}
+                                                onClick={() => setViewport('tablet')}
+                                            >
+                                                Tablet
+                                            </button>
+                                            <button
+                                                className={`viewport-btn ${viewport === 'mobile' ? 'active' : ''}`}
+                                                onClick={() => setViewport('mobile')}
+                                            >
+                                                Mobile
+                                            </button>
+                                        </div>
+
+                                        {/* Show/Hide Code Toggler */}
+                                        <button 
+                                            className="viewport-btn"
+                                            style={{ 
+                                                backgroundColor: showCodePanel ? 'rgba(255,255,255,0.05)' : 'var(--accent)', 
+                                                color: showCodePanel ? 'var(--text-muted)' : '#090d16',
+                                                border: '1px solid var(--border)',
+                                                fontWeight: '600'
+                                            }}
+                                            onClick={() => setShowCodePanel(!showCodePanel)}
+                                        >
+                                            {showCodePanel ? 'Hide Code Box' : '📋 Show Code Box'}
+                                        </button>
+                                    </div>
+                                </header>
+
+                                {/* Interactive Iframe Display */}
+                                <div className="iframe-container">
+                                    <iframe
+                                        key={activeTab.id}
+                                        src={activeTab.filename}
+                                        className="preview-iframe"
+                                        style={getViewportStyle()}
+                                        title={activeTab.label}
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Right Pane - HTML Code copy center */}
+                            {showCodePanel && (
+                                <div className="code-pane">
+                                    <header className="code-header">
+                                        <span className="pane-title">Canvas HTML Code Box</span>
+                                        <button className="copy-btn" onClick={copyToClipboard}>
+                                            <span>📋</span> Copy HTML
+                                        </button>
+                                    </header>
+                                    <div className="code-box-wrapper">
+                                        <textarea
+                                            ref={textareaRef}
+                                            className="code-box"
+                                            value={code}
+                                            readOnly
+                                        />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Copied Success Popup */}
+                    <div className={`toast ${showToast ? 'show' : ''}`}>
+                        <span>✓</span> HTML Code Copied to Clipboard!
+                    </div>
+                </div>
+            );
+        }
+
+        const root = document.getElementById('root');
+        ReactDOM.createRoot(root).render(<App />);
+    </script>
+</body>
+</html>

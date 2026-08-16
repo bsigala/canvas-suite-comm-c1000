@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMM C1000 - Canvas Suite Master Deployment & Audio Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #080C14;
+            --card-dark: #0F172A;
+            --border-dark: rgba(217, 119, 6, 0.3);
+            --gold: #FBBF24;
+            --amber: #D97706;
+            --cyan: #38BDF8;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+        .header {
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            border-bottom: 1px solid var(--border-dark);
+            padding-bottom: 25px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(217, 119, 6, 0.15);
+            color: var(--gold);
+            border: 1px solid var(--border-dark);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FBBF24 0%, #D97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .card {
+            background: var(--card-dark);
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .card h2 {
+            color: var(--cyan);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .file-list {
+            list-style: none;
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.9rem;
+        }
+        .file-item:hover {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+        }
+        .file-name {
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+        .btn {
+            background: rgba(217, 119, 6, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--border-dark);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn:hover {
+            background: var(--amber);
+            color: #fff;
+        }
+        .audio-player-box {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border-dark);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        .coach-status-banner {
+            max-width: 1200px;
+            margin: 30px auto 0 auto;
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="badge">Production Asset Suite</span>
+        <h1>COMM C1000 Canvas Suite &amp; Audio Hub</h1>
+        <p class="subtitle">Mr. Benjamin Sigala • Rio Hondo College • Public Speaking Course Engine</p>
+    </div>
+
+    <div class="grid">
+        <!-- Warm Editorial Suite -->
+        <div class="card">
+            <h2>📜 Warm Editorial (Light / Serif Academic)</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Tailored for clean academic readability with soft paper textures.</p>
+            <ul class="file-list" id="editorialList">
+                <li class="file-item"><span class="file-name">Home_Page.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Home_Page.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Syllabus.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Syllabus.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Opening_Announcement.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Opening_Announcement.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Discussion_Icebreaker.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Discussion_Icebreaker.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_01_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_01_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_02_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_02_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_03_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_03_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_04_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_04_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_05_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_05_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_06_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_06_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_07_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_07_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_08_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_08_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_09_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_09_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_10_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_10_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_11_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_11_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_12_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_12_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_13_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_13_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_14_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_14_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_15_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_15_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_16_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Warm_Editorial/Week_16_Overview.html" target="_blank">Open</a></div></li>
+            </ul>
+        </div>
+
+        <!-- Acoustic Somatic Suite -->
+        <div class="card">
+            <h2>⚡ Acoustic Somatic (Dark / Somatic Studio)</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">High-contrast modern dark mode with amber/cyan neon focus highlights.</p>
+            <ul class="file-list" id="somaticList">
+                <li class="file-item"><span class="file-name">Home_Page.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Home_Page.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Syllabus.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Syllabus.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Opening_Announcement.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Opening_Announcement.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Discussion_Icebreaker.html</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Discussion_Icebreaker.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_01_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_01_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_02_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_02_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_03_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_03_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_04_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_04_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_05_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_05_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_06_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_06_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_07_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_07_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_08_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_08_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_09_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_09_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_10_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_10_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_11_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_11_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_12_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_12_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_13_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_13_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_14_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_14_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_15_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_15_Overview.html" target="_blank">Open</a></div></li>
+                <li class="file-item"><span class="file-name">Week_16_Overview.html (with Audio)</span><div class="btn-group"><a class="btn" href="Individual_Pages/Acoustic_Somatic/Week_16_Overview.html" target="_blank">Open</a></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Live Cloud Speech Coach Banner -->
+    <div class="coach-status-banner">
+        <div>
+            <h3 style="color: var(--gold); margin-bottom: 4px;">🚀 Live Tier-3 Gemini AI Speech Coach Connected</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Endpoint: <code>https://ollama-tier3-bridge-1008787168399.us-central1.run.app</code></p>
+        </div>
+        <div>
+            <a class="btn" style="padding: 10px 20px; font-size: 0.9rem;" href="https://ollama-tier3-bridge-1008787168399.us-central1.run.app" target="_blank">View Live Engine Status</a>
+        </div>
+    </div>
+</body>
+</html>

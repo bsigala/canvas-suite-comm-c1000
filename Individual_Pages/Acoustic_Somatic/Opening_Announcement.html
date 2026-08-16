@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opening Announcement - COMM C1000 Intro to Public Speaking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        .canvas-announcement-wrapper {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #2b2a27;
+            background-color: #faf8f5;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .announcement-container {
+            max-width: 850px;
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #e6dfd5;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(140, 94, 40, 0.04);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        /* Banner styling */
+        .announcement-banner {
+            background: linear-gradient(rgba(140, 94, 40, 0.03), rgba(140, 94, 40, 0.08)), url('https://images.unsplash.com/photo-1531685250784-7569952593d2?auto=format&fit=crop&w=1374&q=80') no-repeat center center;
+            background-size: cover;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 1px solid #dfd3c3;
+        }
+
+        .announcement-banner h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #8c5e28;
+            margin: 0 0 10px 0;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            letter-spacing: -0.02em;
+        }
+
+        .announcement-banner p {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #605e5a;
+            margin: 0;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Beautiful Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #e6dfd5;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            margin: 30px 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Sections */
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #8c5e28;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #e6dfd5;
+            padding-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #42403d;
+            margin-bottom: 18px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: #42403d;
+        }
+
+        a {
+            color: #c68a4c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #c68a4c;
+            transition: color 0.15s ease-in-out;
+        }
+
+        a:hover {
+            color: #8c5e28;
+            border-bottom-style: solid;
+        }
+
+        /* Support Highlight Card */
+        .support-card {
+            background-color: #faf8f5;
+            border: 1px solid #e6dfd5;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        /* Action funnel roadmap card */
+        .get-started-card {
+            background-color: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-left: 4px solid #d97706;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.04);
+        }
+
+        .get-started-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .roadmap-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .roadmap-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background-color: #d97706;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .announcement-container {
+                padding: 25px;
+            }
+
+            .announcement-banner {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-announcement-wrapper">
+        <div class="announcement-container">
+            <!-- Header Hero Banner -->
+            <div class="announcement-banner">
+                <h1>COMM C1000 Intro to Public Speaking</h1>
+                <p>Formerly SPCH 101 · Fall 2026 Opening Announcement</p>
+            </div>
+
+            <!-- YouTube Welcoming Video -->
+            <div class="video-container">
+                <iframe title="Welcome to SPCH COMM! HD 1080p" src="https://www.youtube-nocookie.com/embed/RPI4gNQnft8?feature=oembed&amp;rel=0" allowfullscreen></iframe>
+            </div>
+
+            <!-- Welcome Message Letter with Instructor Avatar -->
+            <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 25px; flex-wrap: wrap;">
+                <img src="https://riohondo.instructure.com/courses/13619/files/2162086/download" alt="Mr. Benjamin Sigala" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #c68a4c; box-shadow: 0 6px 16px rgba(140, 94, 40, 0.1); flex-shrink: 0;" onerror="this.src='https://riohondo.instructure.com/courses/13619/files/2162086/download';">
+                <div style="flex-grow: 1; min-width: 280px; text-align: left;">
+                    <p style="margin-top: 0; font-size: 1.05rem;">
+                        <strong>Hello everyone! My name is Benjamin Sigala, and welcome to COMM C1000 Introduction to Public Speaking (formerly SPCH 101)!</strong> In this course, you will learn and apply foundational rhetorical theories and techniques of public speaking in a multicultural democratic society. You will discover, develop, and critically analyze ideas in public discourse through research, reasoning, organization, composition, delivery, and evaluation of various types of speeches, including informative and persuasive speeches. This course is designed for Communication Studies majors and recommended for students interested in the Forensics: Speech and Debate team, and/or Pathway to Law.
+                    </p>
+                </div>
+            </div>
+            <p>
+                This class is designed as an **entirely asynchronous online (WEB) course**, meaning we don't meet live on campus, but we still operate as a synchronized team! **You will complete and submit weekly assignments in this online course through Canvas.**
+            </p>
+
+            <div class="support-card">
+                <p style="margin-bottom: 10px; font-weight: 600; color: #8c5e28;">New to Canvas? Watch these quick orientation tutorials:</p>
+                <ul>
+                    <li>Watch "<a href="https://www.youtube.com/watch?v=bZ_z8f2Q_EI" target="_blank" rel="noopener">Canvas Basic Course Navigation as a Student</a>" for an introduction to using Canvas.</li>
+                    <li>Watch "<a href="https://youtu.be/aKisF0u7EEE" target="_blank" rel="noopener">Canvas - Conversations</a>" for an introduction on how to message people through Canvas.</li>
+                </ul>
+            </div>
+
+            <!-- Contacting Instructor -->
+            <h2>Contacting the Instructor (Me)</h2>
+            <p>
+                For any course-related questions, technical hurdles, or accommodation requests, please message me through the <a href="https://riohondo.instructure.com/conversations" target="_blank" rel="noopener">Rio Hondo College Canvas Conversations Inbox</a>. This keeps our dialogue secure and central. Remember that replies may take up to 48 hours Monday through Thursday, though I always make an effort to respond much faster.
+            </p>
+
+            <!-- Required Materials -->
+            <h2>Required Materials</h2>
+            <p>
+                Expect to spend about 15 hours a week on reading, outlining, recording, and peer reviewing. To keep this course highly accessible, **our textbook is entirely digital and completely free!** You can access it directly inside our modules or via the link in our course syllabus.
+            </p>
+
+            <!-- What to Expect from the Class -->
+            <h2>What to Expect from the Class</h2>
+            <ul>
+                <li>My philosophy is that education should be fun! I'm a "learn by doing" style educator, so you will complete multiple small tasks weekly to get a feel for the speaking skills we are developing, before compiling them into a final speech.</li>
+                <li>As long as you follow directions and submit on time, you will earn full credit for small homework check-ins. However, I will critically evaluate the larger outlines, visual aids, and speech videos with structured rubrics, so you can expect to see my feedback in your Grades page.</li>
+            </ul>
+
+            <!-- Completing Work -->
+            <h2>Completing Work &amp; Participation</h2>
+            <ul>
+                <li><strong>Strict Deadlines:</strong> Any assignments submitted after their scheduled Canvas deadlines will receive a score of zero. Modules and tasks are unlocked on a weekly pace to help you establish consistent, effective online learning habits.</li>
+                <li><strong>Drop Policy:</strong> Consistent submission is how I track attendance. Students who miss two consecutive weeks of work will be dropped from the course.</li>
+            </ul>
+
+            <!-- Additional Resources -->
+            <h2>Additional Support &amp; Resources</h2>
+            <ul>
+                <li>Visit the <a href="https://www.riohondo.edu/remoteservices/" target="_blank" rel="noopener">Rio Hondo College Virtual Welcome Center</a> to connect virtually with campus staff for registration, counseling, or financial aid.</li>
+                <li>If you have a verified disability, check out the <a href="https://www.riohondo.edu/dsps/" target="_blank" rel="noopener">Rio Hondo College DSPS</a> for accommodation services, or message me directly with your approved accommodation form.</li>
+            </ul>
+
+            <!-- Let's Get Started Action Roadmap -->
+            <div class="get-started-card">
+                <h3>🚀 Let's Get Started!</h3>
+                <p style="color: #78350f; font-weight: 500; margin-bottom: 20px;">
+                    I urge you all to build momentum from the very beginning of our time together. Take your first successful steps by immediately visiting the following modules:
+                </p>
+                <div class="roadmap-step">
+                    <span class="step-number">0</span>
+                    <p class="step-text"><strong>Start Here: Orientation for the Course</strong> — Read the course overview and familiarize yourself with the syllabus structure.</p>
+                </div>
+                <div class="roadmap-step">
+                    <span class="step-number">1</span>
+                    <p class="step-text"><strong>COMM C1000 Module 1.0 Introduction: Check-in Discussion</strong> — Record your welcoming icebreaker video and introduce yourself to the class!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

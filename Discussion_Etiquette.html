@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Etiquette &amp; Commenting Models - COMM C1000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        .canvas-etiquette-wrapper {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #2b2a27;
+            background-color: #faf8f5;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .etiquette-container {
+            max-width: 900px;
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #e6dfd5;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(140, 94, 40, 0.04);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #8c5e28;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.02em;
+        }
+
+        .etiquette-subtitle {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #c68a4c;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e6dfd5;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #42403d;
+            margin-bottom: 18px;
+        }
+
+        /* Discussion Thread explanation card */
+        .intro-card {
+            background-color: #faf8f5;
+            border: 1px solid #e6dfd5;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 35px;
+        }
+
+        .intro-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #8c5e28;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Outstanding Table design for 3 C's and a Q */
+        .framework-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        .framework-table th {
+            font-family: 'Playfair Display', Georgia, serif;
+            background-color: #faf3eb;
+            color: #8c5e28;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: left;
+            padding: 15px 20px;
+            border-bottom: 2px solid #dfd3c3;
+        }
+
+        .framework-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e6dfd5;
+            vertical-align: top;
+            color: #42403d;
+        }
+
+        .framework-table tr:hover {
+            background-color: #faf9f6;
+        }
+
+        .framework-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .role-badge {
+            font-weight: 700;
+            color: #8c5e28;
+            font-size: 1.05rem;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .example-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .example-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #605e5a;
+            font-style: italic;
+        }
+
+        .example-list li::before {
+            content: "“";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: #c68a4c;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', Georgia, serif;
+            line-height: 1;
+        }
+
+        /* Best Practices & Guidelines Panels */
+        .policy-block {
+            border-left: 3px solid #dfd3c3;
+            padding-left: 20px;
+            margin: 25px 0;
+        }
+
+        .policy-block h4 {
+            color: #8c5e28;
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        ol, ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: #42403d;
+        }
+
+        a {
+            color: #c68a4c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #c68a4c;
+            transition: color 0.15s ease-in-out;
+        }
+
+        a:hover {
+            color: #8c5e28;
+            border-bottom-style: solid;
+        }
+
+        /* Back to Module indicators */
+        .module-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e6dfd5;
+            color: #605e5a;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .arrow-indicator {
+            font-size: 1.1rem;
+            color: #c68a4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-etiquette-wrapper">
+        <div class="etiquette-container">
+            <!-- Header Section -->
+            <h1>Discussion Etiquette &amp; Commenting Models</h1>
+            <div class="etiquette-subtitle">COMM C1000 — Strong Guidelines for Constructive Async Dialogue</div>
+
+            <!-- Threaded Discussion Intro -->
+            <section class="intro-card">
+                <h3>Threaded Discussions &amp; Community</h3>
+                <p>
+                    Discussions in COMM C1000 are forms of <strong>asynchronous communication</strong>. This means we are not meeting live, but rather posting questions, arguments, outlines, and video check-ins to a shared discussion board where your peers can read and reply to them at a later time.
+                </p>
+                <p>
+                    Discussions are accessible to all participants in our Canvas workspace, so they are not the place for private inquiries. (For personal questions, please always use the Canvas Inbox). Threaded formatting helps keep our dialogue highly organized and contextualized, making it easier for everyone to follow along!
+                </p>
+            </section>
+
+            <!-- 3 C's and a Q Framework Title -->
+            <h2>The "3 C's and a Q" Response Model</h2>
+            <p>
+                When replying to your classmates' discussion posts, your responses should <strong>deepen the conversation and offer substantial insights</strong>, not merely agree with what they wrote. To achieve this, you are expected to use the **3 C's and a Q** commenting model:
+            </p>
+
+            <!-- Outstanding framework table -->
+            <table class="framework-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">3 C's and a Q</th>
+                        <th style="width: 40%;">Purpose &amp; Guidelines</th>
+                        <th style="width: 35%;">Sentence Starters &amp; Examples</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="role-badge">Compliment</span>
+                        </td>
+                        <td>
+                            Start positive. Validate your classmate's perspective, or offer a compliment about a specific, compelling point they made.
+                        </td>
+                        <td>
+                            <ul class="example-list">
+                                <li>I really liked your point about...</li>
+                                <li>I understand how you came to the conclusion that...</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="role-badge">Comment</span>
+                        </td>
+                        <td>
+                            Add substantial thoughts to what was said. Express agreement or respectful disagreement, backed up by your observations or readings.
+                        </td>
+                        <td>
+                            <ul class="example-list">
+                                <li>I agree with your stance because, for example, ...</li>
+                                <li>I respect your perspective, but I came to a different conclusion because...</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="role-badge">Connect</span>
+                        </td>
+                        <td>
+                            Build a personal connection. Relate their post to your own experience, something you have read in our textbook, or observed elsewhere.
+                        </td>
+                        <td>
+                            <ul class="example-list">
+                                <li>The same thing happened to me when...</li>
+                                <li>I read a similar article in our OER text which notes...</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="role-badge">Question</span>
+                        </td>
+                        <td>
+                            Keep the conversation alive! Pose a constructive follow-up question that prompts your classmate to expand on their ideas.
+                        </td>
+                        <td>
+                            <ul class="example-list">
+                                <li>I wonder what effect X might have on...</li>
+                                <li>How might you feel differently about this topic if...</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Best Practices for Discussion Prompts -->
+            <h2>Succeeding on Discussion Boards</h2>
+            
+            <div class="policy-block">
+                <h4>1. Formulate Open-Ended Insights</h4>
+                <p>
+                    A good discussion post avoids simple yes/no answers. If a prompt can be answered in one word or is a factual recall from our readings, it makes for a poor discussion. Focus on sharing your unique arguments and personal connections to the topics!
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h4>2. Narrow Your Scope, Ground with Personal Context</h4>
+                <p>
+                    Avoid being overly broad. Instead of giving a generic overview of an article, describe how the article relates to a specific personal event or speech topic you are interested in. This makes your initial posts far more engaging for your peers to review!
+                </p>
+            </div>
+
+            <div class="policy-block">
+                <h4>3. Space Your Contributions Out</h4>
+                <p>
+                    Always submit your posts throughout the designated discussion window rather than submitting them all on the final day. Spacing your replies out gives your peers plenty of time to read, reflect, and keep our class-wide dialogue active.
+                </p>
+            </div>
+
+            <!-- External resources links -->
+            <h2 style="margin-top: 40px;">Canvas Discussion Resources</h2>
+            <p>You can read these official Canvas guides for technical assistance with discussions:</p>
+            <ul>
+                <li><a href="https://community.canvaslms.com/docs/DOC-1977" target="_blank" rel="noopener">Creating a Discussion Board Entry</a></li>
+                <li><a href="https://community.canvaslms.com/docs/DOC-3195" target="_blank" rel="noopener">Replying to a Discussion Post</a></li>
+                <li><a href="https://community.canvaslms.com/docs/DOC-2779" target="_blank" rel="noopener">How to Attach a File to your Replies</a></li>
+            </ul>
+
+            <!-- Module Navigation indicator -->
+            <footer class="module-indicator">
+                <span>Click the <strong>Next</strong> button below to return to the active module</span>
+                <span class="arrow-indicator">➔</span>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

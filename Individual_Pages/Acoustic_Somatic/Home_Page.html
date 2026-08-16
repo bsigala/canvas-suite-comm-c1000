@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Course Homepage - COMM C1000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        .canvas-home-wrapper {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #2b2a27;
+            background-color: #faf8f5;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .home-container {
+            max-width: 950px;
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #e6dfd5;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(140, 94, 40, 0.04);
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Top Hero Header */
+        .home-header {
+            margin-bottom: 30px;
+        }
+
+        .home-header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #8c5e28;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .home-header p {
+            font-size: 1.1rem;
+            color: #c68a4c;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Video Container */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #e6dfd5;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            margin: 30px auto;
+            max-width: 750px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Shaded Hovering Navigation Tabs (Buttons) */
+        .tabs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .nav-tab-card {
+            background-color: #faf8f5;
+            border: 1px solid #e6dfd5;
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-decoration: none;
+            color: #2b2a27;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-sizing: border-box;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .nav-tab-card:hover {
+            background-color: #faf3eb;
+            border-color: #c68a4c;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(198, 138, 76, 0.1);
+        }
+
+        .tab-icon {
+            font-size: 1.6rem;
+            color: #8c5e28;
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .nav-tab-card:hover .tab-icon {
+            transform: scale(1.15);
+        }
+
+        .tab-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #8c5e28;
+            margin: 0;
+        }
+
+        .tab-desc {
+            font-size: 0.75rem;
+            color: #605e5a;
+            margin: 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Course Intro Brief block */
+        .intro-brief {
+            background-color: #faf8f5;
+            border: 1px solid #e6dfd5;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .intro-brief h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #8c5e28;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .intro-brief p {
+            font-size: 0.95rem;
+            color: #42403d;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+
+        /* 16-Week Touchpoint Strip */
+        .touchpoint-strip {
+            margin: 30px 0 10px 0;
+            text-align: left;
+        }
+        .touchpoint-strip h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #8c5e28;
+            margin: 0 0 6px 0;
+        }
+        .touchpoint-strip .strip-note {
+            font-size: 0.85rem;
+            color: #605e5a;
+            margin: 0 0 16px 0;
+        }
+        .touchpoint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .touchpoint-item {
+            background-color: #faf8f5;
+            border: 1px solid #e6dfd5;
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .touchpoint-item .wk {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c68a4c;
+            background-color: rgba(198, 138, 76, 0.08);
+            border: 1px solid rgba(198, 138, 76, 0.25);
+            border-radius: 20px;
+            padding: 2px 8px;
+            margin-bottom: 6px;
+        }
+        .touchpoint-item .ttl {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            color: #8c5e28;
+            font-size: 0.95rem;
+            line-height: 1.3;
+            margin: 4px 0 8px 0;
+        }
+        .touchpoint-item audio {
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .touchpoint-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .tabs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .home-container {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tabs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-home-wrapper">
+        <div class="home-container">
+            <!-- Header section -->
+            <header class="home-header">
+                <h1>COMM C1000 Intro to Public Speaking</h1>
+                <p>Welcome to your Interactive Canvas Classroom</p>
+            </header>
+
+            <!-- Video Intro embed -->
+            <div class="video-wrapper">
+                <iframe title="Course Welcome Video" src="https://www.youtube-nocookie.com/embed/RPI4gNQnft8?feature=oembed&amp;rel=0" allowfullscreen></iframe>
+            </div>
+
+            <!-- Shaded Hovering Navigation Tabs Grid -->
+            <nav class="tabs-grid">
+                <a href="Syllabus.html" class="nav-tab-card">
+                    <span class="tab-icon">📖</span>
+                    <h3 class="tab-title">Syllabus</h3>
+                    <p class="tab-desc">Continuous course syllabus &amp; required materials</p>
+                </a>
+                <a href="#modules" class="nav-tab-card">
+                    <span class="tab-icon">🗂️</span>
+                    <h3 class="tab-title">Modules</h3>
+                    <p class="tab-desc">Access weekly learning units &amp; assignments</p>
+                </a>
+                <a href="Profile_Page.html" class="nav-tab-card">
+                    <span class="tab-icon">👨‍🏫</span>
+                    <h3 class="tab-title">Instructor</h3>
+                    <p class="tab-desc">Meet your instructor &amp; see office hours</p>
+                </a>
+                <a href="Discussion_Etiquette.html" class="nav-tab-card">
+                    <span class="tab-icon">💬</span>
+                    <h3 class="tab-title">Etiquette</h3>
+                    <p class="tab-desc">3 C's &amp; Q commenting rules &amp; netiquette</p>
+                </a>
+            </nav>
+
+            <!-- Short course introduction card with Instructor Avatar -->
+            <section class="intro-brief" style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+                <img src="https://riohondo.instructure.com/courses/13619/files/2162086/download" alt="Mr. Benjamin Sigala" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c68a4c; box-shadow: 0 4px 10px rgba(140, 94, 40, 0.08); flex-shrink: 0;" onerror="this.src='https://riohondo.instructure.com/courses/13619/files/2162086/download';">
+                <div style="flex-grow: 1; min-width: 250px;">
+                    <h3 style="margin-top: 0;">About This Course</h3>
+                    <p style="margin-bottom: 0;">
+                        In COMM C1000 Introduction to Public Speaking (formerly SPCH 101), students learn and apply foundational rhetorical theories and techniques of public speaking in a multicultural democratic society. Students discover, develop, and critically analyze ideas in public discourse through research, reasoning, organization, composition, delivery, and evaluation of various types of speeches, including informative and persuasive speeches. Tap into the navigation cards above to begin exploring our modules!
+                    </p>
+                </div>
+            </section>
+
+            <!-- 16-Week Touchpoint Strip -->
+            <section class="touchpoint-strip">
+                <h3>🎙️ 16-Week Instructor Touchpoint Strip</h3>
+                <p class="strip-note">Every weekly Title 5 RSI instructor overview in one place — tap any week to listen.</p>
+                <!-- 📁 Canvas tip: upload the 16 week_XX_rsi_touchpoint.mp3/.m4a files to Canvas Files, then update each src below to the file URLs. -->
+                <div class="touchpoint-grid">
+                    <div class="touchpoint-item"><span class="wk">Week 01</span><div class="ttl">Welcome &amp; Framing Apprehension</div><audio controls preload="none"><source src="Audio_Assets/week_01_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_01_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 02</span><div class="ttl">Somatic Control &amp; Acoustic Geometry</div><audio controls preload="none"><source src="Audio_Assets/week_02_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_02_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 03</span><div class="ttl">Speech 1 Pre-Flight &amp; Ethics</div><audio controls preload="none"><source src="Audio_Assets/week_03_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_03_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 04</span><div class="ttl">Post-Speech 1 Debrief &amp; Research</div><audio controls preload="none"><source src="Audio_Assets/week_04_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_04_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 05</span><div class="ttl">Information Literacy &amp; Citations</div><audio controls preload="none"><source src="Audio_Assets/week_05_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_05_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 06</span><div class="ttl">Visual Aid Design &amp; Cognitive Load</div><audio controls preload="none"><source src="Audio_Assets/week_06_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_06_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 07</span><div class="ttl">Speech 2 Outlining &amp; Peer Review</div><audio controls preload="none"><source src="Audio_Assets/week_07_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_07_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 08</span><div class="ttl">Speech 2 Post-Mortem &amp; Monroe Intro</div><audio controls preload="none"><source src="Audio_Assets/week_08_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_08_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 09</span><div class="ttl">Rhetorical Proofs (Ethos/Pathos/Logos)</div><audio controls preload="none"><source src="Audio_Assets/week_09_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_09_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 10</span><div class="ttl">Monroe's Sequence Blueprinting</div><audio controls preload="none"><source src="Audio_Assets/week_10_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_10_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 11</span><div class="ttl">Logical Fallacy Diagnostics</div><audio controls preload="none"><source src="Audio_Assets/week_11_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_11_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 12</span><div class="ttl">Speech 3 Pre-Flight &amp; Persuasion</div><audio controls preload="none"><source src="Audio_Assets/week_12_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_12_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 13</span><div class="ttl">Post-Persuasion &amp; Ceremonial Intro</div><audio controls preload="none"><source src="Audio_Assets/week_13_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_13_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 14</span><div class="ttl">Speech 4 Execution &amp; Ceremonial Elegance</div><audio controls preload="none"><source src="Audio_Assets/week_14_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_14_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 15</span><div class="ttl">Final Peer Critique &amp; Reflection</div><audio controls preload="none"><source src="Audio_Assets/week_15_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_15_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                    <div class="touchpoint-item"><span class="wk">Week 16</span><div class="ttl">Capstone &amp; Beyond the Classroom</div><audio controls preload="none"><source src="Audio_Assets/week_16_rsi_touchpoint.m4a" type="audio/mp4"><source src="Audio_Assets/week_16_rsi_touchpoint.mp3" type="audio/mpeg"></audio></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
